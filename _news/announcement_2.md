@@ -1,31 +1,36 @@
 ---
 layout: post
-title: A long announcement with details
-date: 2015-11-07 16:11:00-0400
+title: Activites at HRI 2023
+date: 2023-03-03 16:11:00
 inline: false
 ---
 
-Announcements and news can be much longer than just quick inline posts. In fact, they can have all the features available for the standard blog posts. See below.
+
+It is my pleasure to let you all know I am part of the program committee for the [VAT4HRT Workshop](https://vat-hri-2023.cs.umu.se/).
+
+My paper 'Robot Health Indicator: A Visual Cue to Improve Level of Autonomy Switching Systems' will also be presented in this workshop.
+
+Here's the abstract of the paper
+
+***
+Using different Levels of Autonomy (LoA), a human operator can
+vary the extent of control they have over a robot’s actions. LoAs
+enable operators to mitigate a robot’s performance degradation
+or limitations in the its autonomous capabilities. However, LoA
+regulation and other tasks may often overload an operator’s cogni-
+tive abilities. Inspired by video game user interfaces, we study if
+adding a ‘Robot Health Bar’ to the robot control UI can reduce the
+cognitive demand and perceptual effort required for LoA regulation
+while promoting trust and transparency. This Health Bar uses the
+robot vitals and robot health framework to quantify and present
+runtime performance degradation in robots. Results from our pi-
+lot study indicate that when using a health bar, operators used to
+manual control more to minimise the risk of robot failure during
+high performance degradation. It also gave us insights and lessons
+to inform subsequent experiments on human-robot teaming.
 
 ***
 
-Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.
 
-#### Hipster list
-<ul>
-    <li>brunch</li>
-    <li>fixie</li>
-    <li>raybans</li>
-    <li>messenger bag</li>
-</ul>
+See you all at HRI. Fair warning though - I look better in my photos than in reality, so you may have a tough time finding me. 
 
-Hoodie Thundercats retro, tote bag 8-bit Godard craft beer gastropub. Truffaut Tumblr taxidermy, raw denim Kickstarter sartorial dreamcatcher. Quinoa chambray slow-carb salvia readymade, bicycle rights 90's yr typewriter selfies letterpress cardigan vegan.
-
-***
-
-Pug heirloom High Life vinyl swag, single-origin coffee four dollar toast taxidermy reprehenderit fap distillery master cleanse locavore. Est anim sapiente leggings Brooklyn ea. Thundercats locavore excepteur veniam eiusmod. Raw denim Truffaut Schlitz, migas sapiente Portland VHS twee Bushwick Marfa typewriter retro id keytar.
-
-> We do not grow absolutely, chronologically. We grow sometimes in one dimension, and not in another, unevenly. We grow partially. We are relative. We are mature in one realm, childish in another.
-> —Anais Nin
-
-Fap aliqua qui, scenester pug Echo Park polaroid irony shabby chic ex cardigan church-key Odd Future accusamus. Blog stumptown sartorial squid, gastropub duis aesthetic Truffaut vero. Pinterest tilde twee, odio mumblecore jean shorts lumbersexual.

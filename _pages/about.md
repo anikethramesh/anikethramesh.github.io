@@ -2,24 +2,25 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href="https://www.birmingham.ac.uk/research/activity/metallurgy-materials/robotics/index.aspx">Extreme Robotics Laboratory, University of Birmingham </a>
+  #. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: coolpic.jpg
   image_circular: false # crops the image to make it circular
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Human-Multirobot Teaming researcher</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Teams of the future will consist of robots and humans. My research explores how to best achieve synergy in such teams. More specifically, I design experiments to understand how human-multirobot teams work in practice, especially when the robots are capable of different behaviours. This requires careful examination of human and robot capabilities, their limitations and how different interaction design choices can affect them. My research is highly interdisciplinary, combining insights from fields like swarm intelligence, robotics, machine learning, UX design, theory of mind, and psychology. Currently my work is focused on applying the 'Robot Vitals and Robot Health' framework to robotic missions in extreme environments.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+<!-- To any team I bring an acumen specialised for collaborative interdisciplinary research and a natural aptitude for problem solving. Get  -->
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+When I'm not in my lab, I write boastful website bios hoping to impress a future research prospect. I also fiddle with my musical instruments (which my flatmates aren’t very fond of), philosophize everything, stack random facts about random things and practice the art of making bad jokes.
+
+

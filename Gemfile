@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 group :jekyll_plugins do
+    gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
     gem 'classifier-reborn'
     gem 'jekyll'
     gem 'jekyll-archives'
@@ -22,3 +23,6 @@ group :other_plugins do
     gem 'feedjira'
     gem 'httparty'
 end
+
+# require 'rbconfig'
+#     gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
