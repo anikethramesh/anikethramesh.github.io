@@ -8,7 +8,7 @@ inline: false
 
 It is my pleasure to let you all know I am part of the program committee for the [VAT4HRT Workshop](https://vat-hri-2023.cs.umu.se/).
 
-My paper 'Robot Health Indicator: A Visual Cue to Improve Level of Autonomy Switching Systems' will also be presented in this workshop.
+My paper [Robot Health Indicator: A Visual Cue to Improve Level of Autonomy Switching Systems](https://arxiv.org/pdf/2303.06776.pdf) will also be presented in this workshop.
 
 Here's the abstract of the paper
 
