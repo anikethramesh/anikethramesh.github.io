@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href="https://www.birmingham.ac.uk/research/activity/metallurgy-materials/robotics/index.aspx">Extreme Robotics Laboratory, University of Birmingham </a>
+subtitle: <a href="https://extremeroboticslab.org/">Extreme Robotics Laboratory, University of Birmingham </a>
   #. Address. Contacts. Moto. Etc.
 
 profile:
