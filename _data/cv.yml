@@ -8,6 +8,9 @@
     # - name: Languages
     #   value: English, Hindi, Tamil, Telugu, Kannada
 
+- title: Work with me
+  contents:  I am a doctoral student with a specialization in designing experiments for human multi-robot system interaction. My research focuses on enabling a single human operator to efficiently monitor and collaborate with multiple intelligent robots in dynamically changing, extreme environments. I bridge the worlds of robotics, machine learning, and UX design to enhance human multi-robot teaming. With extensive experience in Python, data science, and open-source AI libraries, I'm well-equipped to design innovative robotics solutions for a wide variety of industrial applications.
+
 - title: Education
   type: time_table
   contents:
@@ -136,6 +139,15 @@
         - Seaborn
         - Pandas
 
+- title: Invited Talks
+  type: time_table
+  contents:
+    - title: Towards Triaging Human-Multirobot teams
+      institution: Responsible AI Group, Department of Computing Science, Umea University, Sweden
+      year: March 2023
+    - title: Towards Triaging Human-Multirobot teams
+      institution: Inform Lab, STIIMA, National Research Council of Italy, Milan
+      year: May 2023
 
 - title: Relevant Work Experience
   type: time_table
@@ -151,9 +163,10 @@
       year: Sep 2016 - Dec 2017
       description: Developed a data ingestion pipeline for customer internet and call usage analysis using Pandas.
 
-
 - title: Interests / Hobbies
   type: list
   contents:
     - Playing the Piano, Melodica, Guitar and Darbuka
     - Classical and contemporary philosophy
+
+- title: References available upon Request
