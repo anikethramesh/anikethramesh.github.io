@@ -61,11 +61,19 @@ export default defineConfig({
     preserveScriptOrder: true,
     fonts: [
       {
-        name: "Google Sans Code",
-        cssVariable: "--font-google-sans-code",
+        name: "EB Garamond",
+        cssVariable: "--font-eb-garamond",
+        provider: fontProviders.google(),
+        fallbacks: ["Georgia", "serif"],
+        weights: [400, 500, 600],
+        styles: ["normal", "italic"],
+      },
+      {
+        name: "Space Mono",
+        cssVariable: "--font-space-mono",
         provider: fontProviders.google(),
         fallbacks: ["monospace"],
-        weights: [300, 400, 500, 600, 700],
+        weights: [400, 700],
         styles: ["normal", "italic"],
       },
     ],

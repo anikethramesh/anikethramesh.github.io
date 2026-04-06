@@ -5,23 +5,24 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --accent: #0a0a0a;
-  --muted: #e8e8e8;
-  --border: #d4d4d4;
+  --background: #f7f5f0;
+  --foreground: #1a1a1a;
+  --accent: #1a1a1a;
+  --muted: #777777;
+  --border: #e0ddd7;
 }
 
 html[data-theme="dark"] {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --accent: #ffffff;
-  --muted: #1a1a1a;
-  --border: #2a2a2a;
+  --background: #1a1a1a;
+  --foreground: #f7f5f0;
+  --accent: #f7f5f0;
+  --muted: #888888;
+  --border: #2e2e2e;
 }
 
 @theme inline {
-  --font-app: var(--font-google-sans-code);
+  --font-body: var(--font-eb-garamond);
+  --font-mono: var(--font-space-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
@@ -39,11 +40,21 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/75 selection:text-background;
+    @apply flex min-h-svh flex-col bg-background text-foreground selection:bg-accent/75 selection:text-background;
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
   }
   a,
   button {
     @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+  a {
+    color: var(--foreground);
+    text-decoration: underline;
+  }
+  a:hover {
+    text-decoration: none;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -52,15 +63,44 @@ html[data-theme="dark"] {
 }
 
 @utility max-w-app {
-  @apply max-w-3xl;
+  max-width: 680px;
 }
 
 @utility app-layout {
-  @apply mx-auto w-full max-w-app px-4;
+  @apply mx-auto w-full max-w-app;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .active-nav {
-  @apply underline decoration-wavy decoration-2 underline-offset-8;
+  color: var(--foreground) !important;
+}
+
+.inactive-nav {
+  color: var(--muted);
+}
+
+/* Monospace utility for nav, metadata, labels, dates */
+.font-mono-ui {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Bordered list items (blog cards, zine lists) */
+.list-ruled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-ruled li {
+  border-top: 1px solid var(--border);
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+.list-ruled li:last-child {
+  border-bottom: 1px solid var(--border);
 }
 
 /* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */

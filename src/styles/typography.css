@@ -4,9 +4,30 @@
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
     @apply prose;
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    max-width: 680px;
 
-    h1,
-    h2,
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      @apply text-foreground;
+      font-family: var(--font-body), Georgia, serif;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: var(--font-mono), monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
     h3,
     h4,
     th {
@@ -29,10 +50,16 @@
 
     p {
       @apply text-justify;
+      margin-bottom: 1.25rem;
     }
 
     a {
-      @apply wrap-break-word text-foreground decoration-dashed underline-offset-4 hover:text-accent focus-visible:no-underline;
+      @apply wrap-break-word text-foreground focus-visible:no-underline;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
     }
 
     ul {
