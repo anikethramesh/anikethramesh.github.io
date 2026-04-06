@@ -8,21 +8,106 @@ import { SITE } from "@/config";
 <Layout title={`My Work | ${SITE.title}`}>
   <Header />
   <main id="main-content" class="app-layout">
-    <section id="my-work" class="app-prose mb-28 max-w-app prose-img:border-0">
-      <h1 class="text-2xl tracking-wider sm:text-3xl">My Work</h1>
+    <section id="my-work" class="work-section">
 
-      <p>[Description of your work, projects, or professional focus.]</p>
+      <!-- ── Page header ── -->
+      <h1 class="page-title">My Career in Robotics</h1>
+      <p class="page-subtitle">What I've built and where</p>
 
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <a href="#">Project One</a> — [Short description]
-        </li>
-        <li>
-          <a href="#">Project Two</a> — [Short description]
-        </li>
+      <p class="body-text">This is a brief overview of my industrial and academic experience. For more detail, <a href="/pdfs/Resume_AnikethRamesh.pdf" target="_blank" rel="noopener noreferrer">download my resume</a>.</p>
+
+      <hr class="section-divider" />
+
+      <h2 class="section-heading">Industry</h2>
+
+      <div class="subsection-header">
+        <p class="subsection-title">Occam Industries — CTO & Co-founder</p>
+        <p class="subsection-meta">Autonomous AI pilot for UAVs</p>
+      </div>
+
+      <p class="body-text">At Occam, I built an AI pilot for drones that works when GPS and comms don't.</p>
+
+      <p class="body-text">I led development of a modular autonomy stack (OccamX) that runs entirely onboard, using vision and inertial sensing to localise, track, and navigate in degraded environments.</p>
+
+      <p class="body-text">The system was built using the Modular Open Systems Approach with clean separation between perception, state estimation and decision making. This enabled it to be retrofitted onto any UAV platform with wafer-thin compute, achieving real-time performance where single-threaded systems fail.</p>
+
+      <p class="body-text body-text--label">Key outcomes:</p>
+      <ul class="body-list">
+        <li>Fully autonomous edge-based onboard perception</li>
+        <li>Stable navigation without GPS</li>
+        <li>Rapid deployment across airframes</li>
+        <li>Validated in real flight conditions in Ukraine</li>
       </ul>
+
+      <hr class="section-divider" />
+
+      <h2 class="section-heading">Academia (PhD)</h2>
+
+      <div class="subsection-header">
+        <p class="subsection-title">Robot Triage and Variable Autonomy</p>
+        <p class="subsection-meta">Supervisors: Prof Rustam Stolkin and Asst Prof Manolis Chiou</p>
+      </div>
+
+      <p class="body-text">Robots fail in the real world in ways that aren't explicitly programmed, especially in challenging environments. Drones destabilise in wind, ground vehicles get stuck, legged systems lose footing. These failures emerge gradually and are hard to detect from individual subsystems, which is why most robots still require constant supervision.</p>
+
+      <p class="body-text body-text--emphasis">The core problem is simple: robots don't know when they are struggling.</p>
+
+      <p class="body-text">During my PhD, I worked on real-time robot self-assessment — enabling a robot to quantify its own performance from operational data.</p>
+
+      <p class="body-text">The key insight I proposed was to treat robots like physiological systems. I introduced Robot Vitals: a set of online indicators combined into a single Robot Health metric, giving a continuous, interpretable measure of how well the robot is actually operating.</p>
+
+      <p class="body-text">Once you can measure robot health in real time, the problem becomes actionable: what do you do with it?</p>
+
+      <p class="body-text">I used Robot Health as a control signal to build human-robot teaming architectures that dynamically adjust autonomy during task execution.</p>
+
+      <p class="body-text body-text--label">At the single-robot level, this meant:</p>
+      <ul class="body-list">
+        <li>Triggering recovery behaviours</li>
+        <li>Requesting operator intervention when needed</li>
+        <li>Blending human and autonomous control based on system state</li>
+      </ul>
+
+      <p class="body-text body-text--label">At the multi-robot level, this extended to triage:</p>
+      <ul class="body-list">
+        <li>Prioritising which robots need attention</li>
+        <li>Allocating limited human bandwidth across a fleet</li>
+        <li>Maintaining overall mission performance without overloading the operator</li>
+      </ul>
+
+      <p class="body-text body-text--label">These systems were validated through human-in-the-loop experiments, showing:</p>
+      <ul class="body-list">
+        <li>Reduced operator–AI conflict</li>
+        <li>Lower aggregate risk of failure</li>
+        <li>Improved task performance without increasing cognitive load</li>
+      </ul>
+
+      <p class="body-text">
+        Full publication list on <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=cuatGVUAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+      </p>
+
     </section>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .work-section { padding-top: 3.5rem; padding-bottom: 4rem; }
+
+  .page-title { font-size: 2rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .page-subtitle { font-family: var(--font-mono), monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 1.9rem; }
+
+  .section-heading { font-size: 1.5rem; font-weight: 500; margin-bottom: 1rem; }
+
+  .subsection-header { margin-bottom: 1rem; }
+  .subsection-title { font-family: var(--font-mono), monospace; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+  .subsection-meta { font-family: var(--font-mono), monospace; font-size: 0.72rem; color: var(--muted); }
+
+  .section-divider { border: none; border-top: 1px solid var(--border); margin-top: 2rem; margin-bottom: 1.5rem; }
+
+  .body-text { font-size: 1.05rem; line-height: 1.68; margin-bottom: 0.9rem; }
+  .body-text--emphasis { border-left: 2px solid var(--border); padding-left: 1rem; margin-bottom: 0.9rem; }
+  .body-text--label { font-family: var(--font-mono), monospace; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; }
+
+  .body-list { list-style: none; padding: 0 0 0.85rem 1rem; margin: 0 0 0.85rem; border-left: 2px solid var(--border); }
+  .body-list li { font-size: 1.05rem; line-height: 1.68; padding: 0.08rem 0; }
+</style>

@@ -3,33 +3,199 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
+
+const researchCoverage = [
+  {
+    title: "ITV News — Robotic Disassembly of EV Batteries",
+    href: "https://www.youtube.com/watch?v=0CcxK7U-tmY",
+    description:
+      "Featured work from the Extreme Robotics Lab, demonstrating autonomous systems operating in hazardous, real-world environments.",
+  },
+  {
+    title: "Robot Lab Live — Human–Robot Teaming in Dangerous Environments",
+    href: "https://www.youtube.com/watch?v=Yg_lKP31soA&list=PLOCYdyFqxhGLbt6C2Rqj6qwzzCwpEIwnM",
+    description:
+      "Invited talk on how robots and humans can coordinate effectively under uncertainty, with a focus on autonomy, trust, and operator interaction.",
+  },
+];
+
+const startupCoverage = [
+  {
+    title: "Occam raises €3M for autonomous drones in Ukraine",
+    href: "https://pathfounders.com/p/occam-raises-3m-autonomous-drones-ukraine-frontline",
+    description:
+      "Coverage of Occam’s AI pilot technology and deployment strategy for GPS-denied, contested environments.",
+  },
+  {
+    title: "Defence Tech Hackathon Coverage",
+    href: "https://www.youtube.com/watch?v=QSNI72GDpbk",
+    description:
+      "Featured as part of European defence innovation efforts, highlighting rapid prototyping and applied autonomy in high-stakes environments.",
+  },
+];
+
+const publications = [
+  {
+    title: "Google Scholar — Aniketh Ramesh",
+    href: "https://scholar.google.com/citations?view_op=list_works&hl=en&user=cuatGVUAAAAJ",
+    description:
+      "Full list of publications covering robot health, variable autonomy, and human–multi-robot teaming.",
+  },
+];
 ---
 
 <Layout title={`Appearances | ${SITE.title}`}>
   <Header />
   <main id="main-content" class="app-layout">
-    <section
-      id="appearances"
-      class="app-prose mb-28 max-w-app prose-img:border-0"
-    >
-      <h1 class="text-2xl tracking-wider sm:text-3xl">Appearances</h1>
+    <section id="appearances" class="appearances-section">
+      <h1 class="page-title">Media &amp; Appearances</h1>
+      <p class="page-subtitle">
+        Research coverage, industry press, and useful links
+      </p>
 
-      <p>Talks, podcasts, interviews, and other public appearances.</p>
+      <p class="body-text">
+        My work on human–robot teaming and autonomous systems has been featured
+        across broadcast media, research platforms, and industry coverage,
+        spanning both academic research and real-world deployment.
+      </p>
 
-      <h2>Talks</h2>
-      <ul>
-        <li>
-          <a href="#">Talk Title</a> — Event Name, Year
-        </li>
-      </ul>
+      <hr class="section-divider" />
 
-      <h2>Podcasts</h2>
-      <ul>
-        <li>
-          <a href="#">Episode Title</a> — Podcast Name, Year
-        </li>
-      </ul>
+      <section aria-labelledby="startup-coverage">
+        <h2 id="startup-coverage" class="section-heading">
+          Startup &amp; Industry Coverage
+        </h2>
+        <ul class="appearance-list">
+          {
+            startupCoverage.map(item => (
+              <li class="appearance-item">
+                <h3 class="item-title">
+                  <a href={item.href} target="_blank" rel="noopener noreferrer">
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="body-text">{item.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <hr class="section-divider" />
+
+      <section aria-labelledby="research-coverage">
+        <h2 id="research-coverage" class="section-heading">
+          Research &amp; Academic Coverage
+        </h2>
+        <ul class="appearance-list">
+          {
+            researchCoverage.map(item => (
+              <li class="appearance-item">
+                <h3 class="item-title">
+                  <a href={item.href} target="_blank" rel="noopener noreferrer">
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="body-text">{item.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <hr class="section-divider" />
+
+      <section aria-labelledby="publications">
+        <h2 id="publications" class="section-heading">Publications</h2>
+        <ul class="appearance-list">
+          {
+            publications.map(item => (
+              <li class="appearance-item">
+                <h3 class="item-title">
+                  <a href={item.href} target="_blank" rel="noopener noreferrer">
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="body-text">{item.description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
     </section>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .appearances-section {
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .page-subtitle {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 1.9rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .appearance-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .appearance-item {
+    padding: 0 0 0.85rem 1rem;
+    margin-bottom: 0.85rem;
+    border-left: 2px solid var(--border);
+  }
+
+  .appearance-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .item-title {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+
+  .item-title a {
+    text-decoration: none;
+  }
+
+  .item-title a:hover {
+    text-decoration: underline;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.68;
+    margin-bottom: 0;
+  }
+</style>
