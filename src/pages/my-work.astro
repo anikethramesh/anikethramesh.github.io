@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE } from "@/config";
+---
+
+<Layout title={`My Work | ${SITE.title}`}>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section id="my-work" class="app-prose mb-28 max-w-app prose-img:border-0">
+      <h1 class="text-2xl tracking-wider sm:text-3xl">My Work</h1>
+
+      <p>[Description of your work, projects, or professional focus.]</p>
+
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <a href="#">Project One</a> — [Short description]
+        </li>
+        <li>
+          <a href="#">Project Two</a> — [Short description]
+        </li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>
