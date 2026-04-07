@@ -43,10 +43,30 @@ const { Content } = await render(post);
 let encryptedPayload: string | undefined;
 
 if (password) {
-  const toArrayBuffer = (bytes: Uint8Array) => {
-    const buffer = new ArrayBuffer(bytes.byteLength);
-    new Uint8Array(buffer).set(bytes);
+  const toArrayBuffer = (bytes: ArrayLike<number>) => {
+    const byteLength = bytes.length;
+    const normalized = new Uint8Array(byteLength);
+    for (let i = 0; i < byteLength; i++) {
+      normalized[i] = bytes[i] ?? 0;
+    }
+    const buffer = new ArrayBuffer(byteLength);
+    new Uint8Array(buffer).set(normalized);
     return buffer;
+  };
+
+  const concatBytes = (...chunks: ArrayLike<number>[]) => {
+    const totalLength = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+    const combined = new Uint8Array(totalLength);
+    let offset = 0;
+
+    for (const chunk of chunks) {
+      for (let i = 0; i < chunk.length; i++) {
+        combined[offset + i] = chunk[i] ?? 0;
+      }
+      offset += chunk.length;
+    }
+
+    return combined;
   };
 
   const container = await AstroContainer.create();
@@ -57,16 +77,16 @@ if (password) {
   const iv = new Uint8Array(randomBytes(12));
   const key = new Uint8Array(pbkdf2Sync(password, salt, 250000, 32, "sha256"));
   const cipher = createCipheriv("aes-256-gcm", key, iv);
-  const ciphertext = Buffer.concat([
+  const ciphertext = concatBytes(
     cipher.update(renderedArticle, "utf8"),
-    cipher.final(),
-  ]);
+    cipher.final()
+  );
   const tag = new Uint8Array(cipher.getAuthTag());
 
   encryptedPayload = JSON.stringify({
     salt: Buffer.from(toArrayBuffer(salt)).toString("base64"),
     iv: Buffer.from(toArrayBuffer(iv)).toString("base64"),
-    ciphertext: ciphertext.toString("base64"),
+    ciphertext: Buffer.from(toArrayBuffer(ciphertext)).toString("base64"),
     tag: Buffer.from(toArrayBuffer(tag)).toString("base64"),
     iterations: 250000,
   });

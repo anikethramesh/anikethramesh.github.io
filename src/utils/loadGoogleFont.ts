@@ -1,8 +1,13 @@
 import { readFile } from "node:fs/promises";
 
-const toArrayBuffer = (bytes: Uint8Array): ArrayBuffer => {
-  const buffer = new ArrayBuffer(bytes.byteLength);
-  new Uint8Array(buffer).set(bytes);
+const toArrayBuffer = (bytes: ArrayLike<number>): ArrayBuffer => {
+  const byteLength = bytes.length;
+  const normalized = new Uint8Array(byteLength);
+  for (let i = 0; i < byteLength; i++) {
+    normalized[i] = bytes[i] ?? 0;
+  }
+  const buffer = new ArrayBuffer(byteLength);
+  new Uint8Array(buffer).set(normalized);
   return buffer;
 };
 
