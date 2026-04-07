@@ -1,4 +1,4 @@
-import { defineConfig, envField, fontProviders } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
@@ -59,23 +59,5 @@ export default defineConfig({
   },
   experimental: {
     preserveScriptOrder: true,
-    fonts: [
-      {
-        name: "EB Garamond",
-        cssVariable: "--font-eb-garamond",
-        provider: fontProviders.google(),
-        fallbacks: ["Georgia", "serif"],
-        weights: [400, 500, 600],
-        styles: ["normal", "italic"],
-      },
-      {
-        name: "Space Mono",
-        cssVariable: "--font-space-mono",
-        provider: fontProviders.google(),
-        fallbacks: ["monospace"],
-        weights: [400, 700],
-        styles: ["normal", "italic"],
-      },
-    ],
   },
 });

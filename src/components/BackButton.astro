@@ -2,6 +2,13 @@
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
+
+type Props = {
+  href?: string;
+  useStoredHref?: boolean;
+};
+
+const { href = "/", useStoredHref = true } = Astro.props;
 ---
 
 {
@@ -9,7 +16,8 @@ import { SITE } from "@/config";
     <div class="app-layout flex items-center justify-start">
       <LinkButton
         id="back-button"
-        href="/"
+        href={href}
+        data-use-stored-href={String(useStoredHref)}
         class="focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"
       >
         <IconChevronLeft class="inline-block size-6 rtl:rotate-180" />
@@ -25,9 +33,10 @@ import { SITE } from "@/config";
     const backButton: HTMLAnchorElement | null =
       document.querySelector("#back-button");
 
+    const useStoredHref = backButton?.dataset.useStoredHref === "true";
     const backUrl = sessionStorage.getItem("backUrl");
 
-    if (backUrl && backButton) {
+    if (useStoredHref && backUrl && backButton) {
       backButton.href = backUrl;
     }
   }

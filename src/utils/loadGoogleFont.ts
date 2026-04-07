@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+
 async function loadGoogleFont(
   font: string,
   text: string,
@@ -49,14 +51,46 @@ async function loadGoogleFonts(
     },
   ];
 
-  const fonts = await Promise.all(
-    fontsConfig.map(async ({ name, font, weight, style }) => {
-      const data = await loadGoogleFont(font, text, weight);
-      return { name, data, weight, style };
-    })
-  );
+  try {
+    const fonts = await Promise.all(
+      fontsConfig.map(async ({ name, font, weight, style }) => {
+        const data = await loadGoogleFont(font, text, weight);
+        return { name, data, weight, style };
+      })
+    );
 
-  return fonts;
+    return fonts;
+  } catch {
+    const fallbackFonts = [
+      {
+        name: "DejaVu Sans",
+        path: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        weight: 400,
+        style: "normal",
+      },
+      {
+        name: "DejaVu Sans",
+        path: "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        weight: 700,
+        style: "bold",
+      },
+    ];
+
+    return Promise.all(
+      fallbackFonts.map(async ({ name, path, weight, style }) => {
+        const data = await readFile(path);
+        return {
+          name,
+          data: data.buffer.slice(
+            data.byteOffset,
+            data.byteOffset + data.byteLength
+          ),
+          weight,
+          style,
+        };
+      })
+    );
+  }
 }
 
 export default loadGoogleFonts;
