@@ -1,11 +1,22 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import { currentZineIssue } from "@/data/zine";
 import { SITE } from "@/config";
 
-const { reading, worthReading, thought, listening, local } = currentZineIssue;
+const issues = await getCollection("zine");
+const [currentIssue] = issues.sort(
+  (a, b) => b.data.sortDate.getTime() - a.data.sortDate.getTime()
+);
+
+// TODO: Add a small zine archive list below the current issue once we want
+// older monthly issues to be browseable from this page.
+if (!currentIssue) {
+  throw new Error("No zine issue found. Add a markdown file under src/data/zine.");
+}
+
+const { reading, worthReading, thought, listening, local } = currentIssue.data;
 
 const toSpotifyEmbedUrl = (url?: string) => {
   if (!url) return undefined;
@@ -33,15 +44,13 @@ const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
   <main id="main-content" class="app-layout">
     <section id="zine" class="zine-section">
       <h1 class="page-title">Zine</h1>
-      <p class="page-subtitle">{currentZineIssue.subtitle}</p>
+      <p class="page-subtitle">{currentIssue.data.subtitle}</p>
       <p class="issue-stamp">
-        {currentZineIssue.issueLabel} · {currentZineIssue.issueDate}
+        {currentIssue.data.issueLabel} · {currentIssue.data.issueDate}
       </p>
 
       <section aria-labelledby="currently-reading" class="zine-block">
-        <p id="currently-reading" class="section-label">
-          {reading.sectionTitle}
-        </p>
+        <p id="currently-reading" class="section-label">Currently reading</p>
         {
           reading.title && (
             reading.href ? (
@@ -74,9 +83,7 @@ const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
       </section>
 
       <section aria-labelledby="worth-reading" class="zine-block">
-        <p id="worth-reading" class="section-label">
-          {worthReading.sectionTitle}
-        </p>
+        <p id="worth-reading" class="section-label">Worth reading</p>
         {
           worthReading.title && (
             worthReading.href ? (
@@ -95,6 +102,24 @@ const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
           )
         }
         {worthReading.meta && <p class="item-meta">{worthReading.meta}</p>}
+        {
+          worthReading.image && (
+            <figure class="media-block">
+              <img
+                src={worthReading.image.src}
+                alt={worthReading.image.alt}
+                class="media-image"
+              />
+              {
+                worthReading.image.caption && (
+                  <figcaption class="media-caption">
+                    {worthReading.image.caption}
+                  </figcaption>
+                )
+              }
+            </figure>
+          )
+        }
         {
           worthReading.description && (
             <p class="body-text">{worthReading.description}</p>
@@ -116,9 +141,7 @@ const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
       </section>
 
       <section aria-labelledby="a-thought" class="zine-block zine-block--quote">
-        <p id="a-thought" class="section-label">
-          {thought.sectionTitle}
-        </p>
+        <p id="a-thought" class="section-label">A thought</p>
         <blockquote class="quote-text">
           <p>"{thought.quote}"</p>
         </blockquote>
@@ -126,9 +149,7 @@ const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
       </section>
 
       <section aria-labelledby="listening-to" class="zine-block">
-        <p id="listening-to" class="section-label">
-          {listening.sectionTitle}
-        </p>
+        <p id="listening-to" class="section-label">Listening to</p>
         {
           listening.title && (
             listening.href ? (
@@ -185,9 +206,7 @@ const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
       </section>
 
       <section aria-labelledby="london-right-now" class="zine-block">
-        <p id="london-right-now" class="section-label">
-          {local.sectionTitle}
-        </p>
+        <p id="london-right-now" class="section-label">London right now</p>
         {
           local.image && (
             <figure class="media-block">
