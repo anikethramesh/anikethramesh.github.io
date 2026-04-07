@@ -1,5 +1,11 @@
 import { readFile } from "node:fs/promises";
 
+const toArrayBuffer = (bytes: Uint8Array): ArrayBuffer => {
+  const buffer = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(buffer).set(bytes);
+  return buffer;
+};
+
 async function loadGoogleFont(
   font: string,
   text: string,
@@ -81,10 +87,7 @@ async function loadGoogleFonts(
         const data = await readFile(path);
         return {
           name,
-          data: data.buffer.slice(
-            data.byteOffset,
-            data.byteOffset + data.byteLength
-          ),
+          data: toArrayBuffer(data),
           weight,
           style,
         };

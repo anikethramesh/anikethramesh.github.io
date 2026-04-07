@@ -43,25 +43,31 @@ const { Content } = await render(post);
 let encryptedPayload: string | undefined;
 
 if (password) {
+  const toArrayBuffer = (bytes: Uint8Array) => {
+    const buffer = new ArrayBuffer(bytes.byteLength);
+    new Uint8Array(buffer).set(bytes);
+    return buffer;
+  };
+
   const container = await AstroContainer.create();
   const renderedArticle = await container.renderToString(Content, {
     request: Astro.request,
   });
-  const salt = randomBytes(16);
-  const iv = randomBytes(12);
-  const key = pbkdf2Sync(password, salt, 250000, 32, "sha256");
+  const salt = new Uint8Array(randomBytes(16));
+  const iv = new Uint8Array(randomBytes(12));
+  const key = new Uint8Array(pbkdf2Sync(password, salt, 250000, 32, "sha256"));
   const cipher = createCipheriv("aes-256-gcm", key, iv);
   const ciphertext = Buffer.concat([
     cipher.update(renderedArticle, "utf8"),
     cipher.final(),
   ]);
-  const tag = cipher.getAuthTag();
+  const tag = new Uint8Array(cipher.getAuthTag());
 
   encryptedPayload = JSON.stringify({
-    salt: salt.toString("base64"),
-    iv: iv.toString("base64"),
+    salt: Buffer.from(toArrayBuffer(salt)).toString("base64"),
+    iv: Buffer.from(toArrayBuffer(iv)).toString("base64"),
     ciphertext: ciphertext.toString("base64"),
-    tag: tag.toString("base64"),
+    tag: Buffer.from(toArrayBuffer(tag)).toString("base64"),
     iterations: 250000,
   });
 }
@@ -377,7 +383,7 @@ const nextPost =
   password && (
     <script is:inline data-astro-rerun>
       function base64ToBytes(base64) {
-        const binary = atob(base64);
+        const binary = globalThis.atob(base64);
         const bytes = new Uint8Array(binary.length);
         for (let i = 0; i < binary.length; i++) {
           bytes[i] = binary.charCodeAt(i);
