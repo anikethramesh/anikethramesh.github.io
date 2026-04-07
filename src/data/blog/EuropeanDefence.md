@@ -1,14 +1,15 @@
 ---
 author: Aniketh Ramesh
-pubDatetime: 2026-04-06T10:00:00Z
+pubDatetime: 2025-12-25T12:50:00Z
 title: What living in Europe has taught me about defense
 featured: false
 draft: false
 tags:
   - Reflection
   - Defence
-  - AI and Robotics
 description: Reflecting on my time in Europe and how I have seen the defence industry shape up.
+# password: change-me
+# passwordHint: Sorry. Exclusively for a smaller circle of people.
 ---
 
 I am part of multiple startup founder communities in the UK. Job boards, networking meetups, communities, practically all the ways that founders try to help each other out. During the initial days of Occam, when I was recruiting, I thought I’d send out feelers that we were looking to hire. I posted on one of these job board groups that I was looking for software engineers to join my team. I said explicitly that this is a defence job, and that we’d be deploying technology used on the front line, and that lives would directly be impacted by our engineering decisions. I got something like 14 puke emoji reactions to that post. A few people even said they hoped we wouldn’t find anyone. 
@@ -21,13 +22,13 @@ I never really understood this judgement as a person from India. I would go so f
 
 Yet, this anti-defence sentiment comes up often enough in Europe that it’s hard to ignore. Which is why I decided to write this post. I’ve been in Europe for almost 8 years now, and therefore feel a semblance of attachment to this continent. I may be no native, but I still feel compelled to write this down from the perspective I’ve had growing up elsewhere.
 
-# I think people forget their history. And the geopolitics.
+# I think people forget their history.
 
-Europe learned this lesson multiple times in the past. In my opinion, the younger generation of today, who are further removed from the wars of the past, are the ones who don’t quite see the role of defence as clearly. The counterfactual is also possible — that people are so disgusted by the idea of war precisely because they’ve seen too much of it. That part is understandable.
+Europe learned this lesson multiple times in the past. In my opinion, the younger generation of today, who are further removed from the wars of the past, are the ones who don’t quite see the role of defence as clearly. The counterfactual is also possible - that people are so disgusted by the idea of war precisely because they’ve seen too much of it. That part is understandable.
 
 If you are having a lot of fights with your partner, you become more conscious of it and try harder to avoid it. You teach your children not to raise their tone, not to get into fights. You also teach them that when mummy and daddy fight, they are wrong - just so the kids don’t grow up normalising it. Similarly, I think the general sentiment of decrying the very ethical basis for war, defence, or anything related to the army has taken hold of public discourse in Europe for a long time. And Europe was able to operate this way for a long time. It had America to cater to its defence needs, the Middle East and Russia to cater to its oil needs, and China to cater to its manufacturing needs. Which led Europe to focus more on being a place that prioritised quality of life and the finer aspects of society. Fair enough. 
 
-However, Karl Popper has this idea called the [paradox of tolerance](https://en.wikipedia.org/wiki/Paradox_of_tolerance). If a society extends tolerance to those who are fundamentally intolerant, the intolerant will eventually undermine both the tolerant and tolerance itself. At a high level, this starts to look less like a permanent state, and more like a temporary equilibrium. Over time, a belief starts to take hold — that maybe the world is a nice place. People can be trusted. The world is not out there to rip you off. We can drop our guns, trust everyone, be nice and share with everyone. As much as I like believing that, I still lock my doors at night.
+However, Karl Popper has this idea called the [paradox of tolerance](https://en.wikipedia.org/wiki/Paradox_of_tolerance). If a society extends tolerance to those who are fundamentally intolerant, the intolerant will eventually undermine both the tolerant and tolerance itself. At a high level, this starts to look less like a permanent state, and more like a temporary equilibrium. Over time, a belief starts to take hold - that maybe the world is a nice place. People can be trusted. The world is not out there to rip you off. We can drop our guns, trust everyone, be nice and share with everyone. As much as I like believing that, I still lock my doors at night.
 
 # Strength respects strength
 
@@ -49,7 +50,7 @@ Coming to the use of LAWS (Lethally Autonomous Weapon Systems), often called “
 
 I’ve heard the argument for “defence is fine, just don’t make killer robots”. That’s a position I can at least understand. People feel the line should be drawn at giving machines agency. I’ve been asked if by giving AI agency, I am building the Terminator, or [VIKI from I, Robot](https://www.youtube.com/watch?v=-8vNfLe6nLQ).
 
-The case against LAWS is that we shouldn’t let machines have more than 2 out of 3 — detect, decide, destroy. There’s also the idea of humans being “in the loop” vs “on the loop”. The former means humans are part of the decision-making process, whereas in the latter the decision is made by the AI with a human supervising. I’ve lived this problem throughout my PhD from the [work by Sheridan and Verplank](https://www.sciencedirect.com/topics/psychology/level-of-automation) to my own work on autonomy switching and mixed-initiative systems.
+The case against LAWS is that we shouldn’t let machines have more than 2 out of 3 - detect, decide, destroy. There’s also the idea of humans being “in the loop” vs “on the loop”. The former means humans are part of the decision-making process, whereas in the latter the decision is made by the AI with a human supervising. I’ve lived this problem throughout my PhD from the [work by Sheridan and Verplank](https://www.sciencedirect.com/topics/psychology/level-of-automation) to my own work on autonomy switching and mixed-initiative systems.
 
 And I don’t think it is actually possible to get a human out of the loop in the first place. Where does decision-making actually sit? If I set a thermostat to maintain 21°C, the system decides when to turn heating on or off. But the objective function, constraints, and acceptable actions were all defined by me. The “decision” is delegated, not originated.
 

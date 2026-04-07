@@ -8,7 +8,7 @@ tags:
   - JAM
   - Work Culture
 description: My take on the evolving work culture, and teams of tomorrow.
-password: change-me
+password: BlahBlah123
 passwordHint: Sorry. Exclusively for a smaller circle of people.
 ---
 We had these JAM competitions when I was in my undergrad. It was an interesting idea - get people on a panel to discuss or debate any topic. Just A Minute -JAM. A moderator would enforce the 'jam rules'. Anyone on the panel could 'jam' the speaker based by calling out that they didn't follow the jam rules. That would make the speaker forfeit their turn instantly and the person who jammed them would get to speak and so on. 
@@ -26,7 +26,6 @@ As the competition started the moderator went through the rules. The topic- 'vir
 As we were prepping for applauding the crap out of Param from the audience the moderator dropped this bombshell of a rule - ' personal attacks are allowed'. Our jaws dropped a lot more than the participants. How were we gonna deal with this? Can we shout anything at anyone? Can we do whataboutery? Can we tell people of cuz they're tall short skinny fat crooked teeth fake accent whatever? This was below the belt. But maybe that was the point. To see who can actually tolerate it and not let it affect their JAM. Definitely something that wouldn't have happened post cancel culture became a thing. 
 
 # Its usually futile to try to talk facts and analysis to a people who are enjoying a sense of moral superiority in their ignorance. - Thomas Sowell
-
 
 Param went up. We were all watching. Confident. He started strong, like he always did. Good cadence, clean structure. He just about warmed up. Then there was a slight pause. That was the mistake. He started thinking about making a coherent point in a game where that wasn't really the objective. Don't quite remember what he wanted to say but it was something about how consent matters. You could see the shift. Just a slight pause. A fraction of hesitation. That was enough. Someone immediately called a deviation. The moderator allowed it. Turn gone.
 

@@ -2,33 +2,332 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { currentZineIssue } from "@/data/zine";
 import { SITE } from "@/config";
+
+const { reading, worthReading, thought, listening, local } = currentZineIssue;
+
+const toSpotifyEmbedUrl = (url?: string) => {
+  if (!url) return undefined;
+
+  try {
+    const parsedUrl = new URL(url);
+    if (!parsedUrl.hostname.includes("spotify.com")) return undefined;
+    if (parsedUrl.pathname.includes("/embed/")) return url;
+
+    const segments = parsedUrl.pathname.split("/").filter(Boolean);
+    if (segments.length < 2) return undefined;
+
+    const [type, id] = segments;
+    return `https://open.spotify.com/embed/${type}/${id}`;
+  } catch {
+    return undefined;
+  }
+};
+
+const listeningEmbedUrl = toSpotifyEmbedUrl(listening.spotifyUrl);
 ---
 
 <Layout title={`Zine | ${SITE.title}`}>
   <Header />
   <main id="main-content" class="app-layout">
-    <section id="zine" class="app-prose mb-28 max-w-app prose-img:border-0">
-      <h1 class="text-2xl tracking-wider sm:text-3xl">Zine</h1>
-
-      <p>
-        A deliberate, curated snapshot — not a live feed. Things I'm reading,
-        listening to, and thinking about.
+    <section id="zine" class="zine-section">
+      <h1 class="page-title">Zine</h1>
+      <p class="page-subtitle">{currentZineIssue.subtitle}</p>
+      <p class="issue-stamp">
+        {currentZineIssue.issueLabel} · {currentZineIssue.issueDate}
       </p>
 
-      <h2>Currently Reading</h2>
-      <ul>
-        <li>[Book or article title] — [Author]</li>
-      </ul>
+      <section aria-labelledby="currently-reading" class="zine-block">
+        <p id="currently-reading" class="section-label">
+          {reading.sectionTitle}
+        </p>
+        {
+          reading.title && (
+            reading.href ? (
+              <h2 class="item-title">
+                <a href={reading.href} target="_blank" rel="noopener noreferrer">
+                  {reading.title}
+                </a>
+              </h2>
+            ) : (
+              <h2 class="item-title">{reading.title}</h2>
+            )
+          )
+        }
+        {reading.meta && <p class="item-meta">{reading.meta}</p>}
+        {
+          reading.image && (
+            <figure class="media-block">
+              <img src={reading.image.src} alt={reading.image.alt} class="media-image" />
+              {
+                reading.image.caption && (
+                  <figcaption class="media-caption">
+                    {reading.image.caption}
+                  </figcaption>
+                )
+              }
+            </figure>
+          )
+        }
+        {reading.description && <p class="body-text">{reading.description}</p>}
+      </section>
 
-      <h2>Listening</h2>
-      <ul>
-        <li>[Playlist or album] — [Artist / Link]</li>
-      </ul>
+      <section aria-labelledby="worth-reading" class="zine-block">
+        <p id="worth-reading" class="section-label">
+          {worthReading.sectionTitle}
+        </p>
+        {
+          worthReading.title && (
+            worthReading.href ? (
+              <h2 class="item-title">
+                <a
+                  href={worthReading.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {worthReading.title}
+                </a>
+              </h2>
+            ) : (
+              <h2 class="item-title">{worthReading.title}</h2>
+            )
+          )
+        }
+        {worthReading.meta && <p class="item-meta">{worthReading.meta}</p>}
+        {
+          worthReading.description && (
+            <p class="body-text">{worthReading.description}</p>
+          )
+        }
+        {
+          worthReading.href && worthReading.linkLabel && (
+            <p class="link-row">
+              <a
+                href={worthReading.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {worthReading.linkLabel}
+              </a>
+            </p>
+          )
+        }
+      </section>
 
-      <h2>Thoughts</h2>
-      <p>[A loose idea, observation, or fragment worth preserving.]</p>
+      <section aria-labelledby="a-thought" class="zine-block zine-block--quote">
+        <p id="a-thought" class="section-label">
+          {thought.sectionTitle}
+        </p>
+        <blockquote class="quote-text">
+          <p>"{thought.quote}"</p>
+        </blockquote>
+        <p class="quote-attribution">{thought.attribution}</p>
+      </section>
+
+      <section aria-labelledby="listening-to" class="zine-block">
+        <p id="listening-to" class="section-label">
+          {listening.sectionTitle}
+        </p>
+        {
+          listening.title && (
+            listening.href ? (
+              <h2 class="item-title">
+                <a
+                  href={listening.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {listening.title}
+                </a>
+              </h2>
+            ) : (
+              <h2 class="item-title">{listening.title}</h2>
+            )
+          )
+        }
+        {listening.meta && <p class="item-meta">{listening.meta}</p>}
+        {
+          listeningEmbedUrl && (
+            <div class="spotify-embed">
+              <iframe
+                src={listeningEmbedUrl}
+                width="100%"
+                height="152"
+                style="border: 0;"
+                allowfullscreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={`Spotify embed for ${listening.title ?? "playlist"}`}
+              />
+            </div>
+          )
+        }
+        {
+          listening.image && (
+            <figure class="media-block">
+              <img
+                src={listening.image.src}
+                alt={listening.image.alt}
+                class="media-image"
+              />
+              {
+                listening.image.caption && (
+                  <figcaption class="media-caption">
+                    {listening.image.caption}
+                  </figcaption>
+                )
+              }
+            </figure>
+          )
+        }
+        {listening.description && <p class="body-text">{listening.description}</p>}
+      </section>
+
+      <section aria-labelledby="london-right-now" class="zine-block">
+        <p id="london-right-now" class="section-label">
+          {local.sectionTitle}
+        </p>
+        {
+          local.image && (
+            <figure class="media-block">
+              <img src={local.image.src} alt={local.image.alt} class="media-image" />
+              {
+                local.image.caption && (
+                  <figcaption class="media-caption">{local.image.caption}</figcaption>
+                )
+              }
+            </figure>
+          )
+        }
+        {local.description && <p class="body-text">{local.description}</p>}
+      </section>
     </section>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .zine-section {
+    padding-top: 3.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .page-subtitle {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 0.55rem;
+  }
+
+  .issue-stamp {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.9rem;
+  }
+
+  .zine-block {
+    border-left: 2px solid var(--border);
+    padding: 0 0 1rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .zine-block--quote {
+    padding-top: 0.1rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+
+  .item-title {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.18rem;
+  }
+
+  .item-title a {
+    text-decoration: none;
+  }
+
+  .item-title a:hover {
+    text-decoration: underline;
+  }
+
+  .item-meta {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 0.45rem;
+  }
+
+  .body-text {
+    font-size: 1.05rem;
+    line-height: 1.68;
+    margin-bottom: 0;
+  }
+
+  .media-block {
+    margin: 0.75rem 0 0.8rem;
+  }
+
+  .media-image {
+    width: 100%;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .media-caption {
+    margin-top: 0.4rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .quote-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 0.55rem;
+  }
+
+  .quote-attribution {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .link-row {
+    margin-top: 0.5rem;
+    font-family: var(--font-mono), monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+  }
+
+  .link-row a {
+    text-decoration: none;
+  }
+
+  .link-row a:hover {
+    text-decoration: underline;
+  }
+
+  .spotify-embed {
+    margin: 0.75rem 0 0.8rem;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+</style>
