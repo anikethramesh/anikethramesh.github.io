@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb.astro";
 import Layout from "./Layout.astro";
 import { SITE } from "@/config";
 
-type Props = MarkdownLayoutProps<{ title: string }>;
+type Props = MarkdownLayoutProps<{ title: string; subtitle?: string }>;
 
 const { frontmatter } = Astro.props;
 ---
@@ -15,10 +15,23 @@ const { frontmatter } = Astro.props;
   <Header />
   <Breadcrumb />
   <main id="main-content" class="app-layout">
-    <section id="about" class="app-prose mb-28 max-w-app prose-img:border-0">
+    <section class="app-prose mb-28 max-w-app prose-img:border-0">
       <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
+      {frontmatter.subtitle && <p class="page-subtitle">{frontmatter.subtitle}</p>}
       <slot />
     </section>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .page-subtitle {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
+</style>

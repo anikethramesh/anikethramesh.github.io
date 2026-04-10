@@ -1,9 +1,14 @@
+// Defines the schema for content collections.
+// `blog` — posts in src/data/blog/*.md
+// `zine` — monthly issues in src/data/zine/*.md
+// Adding a field here makes it available (and validated) in frontmatter.
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 
 export const BLOG_PATH = "src/data/blog";
 export const ZINE_PATH = "src/data/zine";
+export const WORK_PATH = "src/data/work";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
@@ -91,4 +96,9 @@ const zine = defineCollection({
   }),
 });
 
-export const collections = { blog, zine };
+const work = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.md", base: `./${WORK_PATH}` }),
+  schema: z.object({}),
+});
+
+export const collections = { blog, zine, work };

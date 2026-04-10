@@ -12,6 +12,7 @@ interface Social {
   icon: (_props: Props) => Element;
 }
 
+// Social links shown in the footer and homepage. Add, remove, or reorder entries here.
 export const SOCIALS: Social[] = [
   {
     name: "GitHub",

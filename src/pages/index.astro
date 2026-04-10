@@ -5,46 +5,17 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
+// Homepage content is in src/data/homepage.ts — edit there, not here.
+import { HOMEPAGE } from "@/data/homepage";
 ---
 
 <Layout title={SITE.title}>
   <Header />
   <main id="main-content" class="app-layout">
     <section id="about" class="app-prose mb-28 max-w-app prose-img:border-0">
-      <h1
-        style="font-family: var(--font-body), Georgia, serif; font-size: 2rem; font-weight: 500; margin-bottom: 0.25rem;"
-      >
-        Aniketh Ramesh
-      </h1>
-      <p
-        style="font-family: var(--font-mono), monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 2rem;"
-      >
-        Founder · Autonomous Systems Engineer · Human Robot Teaming Researcher
-      </p>
-      <p>
-        I build autonomous systems that deliver outcomes in challenging
-        environments with minimal supervision. My work sits at the intersection
-        of autonomy, robotics, and the uncomfortable edge cases that only show
-        up in the field.
-      </p>
-      <p>
-        PhD at the Extreme Robotics Lab, University of Birmingham - researching
-        how robots, AIs and humans can work as actual teams. Designed the Robot
-        Vitals framework for robotic self-supervision and performance assessment.
-      </p>
-      <p>
-        Co-founded and exited as CTO of Occam Industries, a hyper-growth defence
-        tech startup that is currently deploying autonomous AI pilots for UAVs.
-        Lead the development the OccamX AI Pilot
-      </p>
-      <p>
-        As an avid Reddit and X lurker, I like geeking out about history and
-        philosophy. Also, I'd like to think I can cook and play music really
-        well.
-      </p>
-
-      <p>Now looking for my next opportunity.</p>
-
+      <h1 class="home-name">{HOMEPAGE.name}</h1>
+      <p class="home-tagline">{HOMEPAGE.tagline}</p>
+      {HOMEPAGE.bio.map(paragraph => <p>{paragraph}</p>)}
       {
         SOCIALS.length > 0 && (
           <div class="mt-6 flex max-sm:flex-col sm:items-center">
@@ -57,3 +28,21 @@ import { SOCIALS } from "@/constants";
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .home-name {
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .home-tagline {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+</style>

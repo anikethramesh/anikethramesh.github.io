@@ -1,3 +1,5 @@
+// Site-wide settings. Update `website`, `author`, `desc`, and `title` when deploying.
+// `ogImage` is the fallback social share image (lives in /public/).
 export const SITE = {
   website: "https://anikethramesh.github.io/",
   author: "Aniketh Ramesh",

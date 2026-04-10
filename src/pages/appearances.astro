@@ -3,45 +3,12 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
-
-const researchCoverage = [
-  {
-    title: "ITV News — Robotic Disassembly of EV Batteries",
-    href: "https://www.youtube.com/watch?v=0CcxK7U-tmY",
-    description:
-      "Featured work from the Extreme Robotics Lab, demonstrating autonomous systems operating in hazardous, real-world environments.",
-  },
-  {
-    title: "Robot Lab Live — Human–Robot Teaming in Dangerous Environments",
-    href: "https://www.youtube.com/watch?v=Yg_lKP31soA&list=PLOCYdyFqxhGLbt6C2Rqj6qwzzCwpEIwnM",
-    description:
-      "Invited talk on how robots and humans can coordinate effectively under uncertainty, with a focus on autonomy, trust, and operator interaction.",
-  },
-];
-
-const startupCoverage = [
-  {
-    title: "Occam raises €3M for autonomous drones in Ukraine",
-    href: "https://pathfounders.com/p/occam-raises-3m-autonomous-drones-ukraine-frontline",
-    description:
-      "Coverage of Occam’s AI pilot technology and deployment strategy for GPS-denied, contested environments.",
-  },
-  {
-    title: "Defence Tech Hackathon Coverage",
-    href: "https://www.youtube.com/watch?v=QSNI72GDpbk",
-    description:
-      "Featured as part of European defence innovation efforts, highlighting rapid prototyping and applied autonomy in high-stakes environments.",
-  },
-];
-
-const publications = [
-  {
-    title: "Google Scholar — Aniketh Ramesh",
-    href: "https://scholar.google.com/citations?view_op=list_works&hl=en&user=cuatGVUAAAAJ",
-    description:
-      "Full list of publications covering robot health, variable autonomy, and human–multi-robot teaming.",
-  },
-];
+// Appearances content is in src/data/appearances.ts — edit there, not here.
+import {
+  startupCoverage,
+  researchCoverage,
+  publications,
+} from "@/data/appearances";
 ---
 
 <Layout title={`Appearances | ${SITE.title}`}>
