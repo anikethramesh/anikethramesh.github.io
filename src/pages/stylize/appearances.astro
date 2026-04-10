@@ -1,0 +1,130 @@
+---
+import StylizeLayout from "@/layouts/StylizeLayout.astro";
+import {
+  publications,
+  researchCoverage,
+  startupCoverage,
+} from "@/data/appearances";
+---
+
+<StylizeLayout
+  title="Media & Appearances"
+  subtitle="Research coverage, industry press, and useful links"
+  normalHref="/appearances"
+>
+  <section class="stylize-appearances">
+    <p class="intro-copy">
+      My work on human-robot teaming and autonomous systems has been featured
+      across broadcast media, research platforms, and industry coverage,
+      spanning both academic research and real-world deployment.
+    </p>
+
+    <section aria-labelledby="stylize-startup-coverage" class="coverage-block">
+      <h2 id="stylize-startup-coverage" class="section-heading">
+        Startup &amp; Industry Coverage
+      </h2>
+      <ul class="coverage-list">
+        {
+          startupCoverage.map(item => (
+            <li class="coverage-item">
+              <h3 class="item-title">
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </h3>
+              <p>{item.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="stylize-research-coverage" class="coverage-block">
+      <h2 id="stylize-research-coverage" class="section-heading">
+        Research &amp; Academic Coverage
+      </h2>
+      <ul class="coverage-list">
+        {
+          researchCoverage.map(item => (
+            <li class="coverage-item">
+              <h3 class="item-title">
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </h3>
+              <p>{item.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="stylize-publications" class="coverage-block">
+      <h2 id="stylize-publications" class="section-heading">Publications</h2>
+      <ul class="coverage-list">
+        {
+          publications.map(item => (
+            <li class="coverage-item">
+              <h3 class="item-title">
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  {item.title}
+                </a>
+              </h3>
+              <p>{item.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </section>
+</StylizeLayout>
+
+<style>
+  .intro-copy {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .coverage-block + .coverage-block {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-heading {
+    font-size: 1.45rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
+
+  .coverage-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .coverage-item {
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+  }
+
+  .coverage-item + .coverage-item {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .item-title {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 0.35rem;
+  }
+
+  .coverage-item p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+</style>

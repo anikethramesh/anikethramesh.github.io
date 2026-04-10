@@ -1,0 +1,92 @@
+---
+import { getEntry, render } from "astro:content";
+import StylizeLayout from "@/layouts/StylizeLayout.astro";
+
+const entry = await getEntry("work", "my-work");
+if (!entry) throw new Error("my-work.md not found in src/data/work/");
+const { Content } = await render(entry);
+---
+
+<StylizeLayout
+  title="My Career in Robotics"
+  subtitle="What I've built and where"
+  normalHref="/my-work"
+>
+  <div class="work-content">
+    <Content />
+  </div>
+</StylizeLayout>
+
+<style>
+  :global(.work-content p) {
+    font-size: 1.05rem;
+    line-height: 1.68;
+    margin-bottom: 0.9rem;
+  }
+
+  :global(.work-content h2) {
+    font-size: 1.45rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+    color: var(--foreground);
+  }
+
+  :global(.work-content h3) {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    margin: 0 0 0.25rem;
+    color: var(--foreground);
+  }
+
+  :global(.work-content h4) {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin: 0 0 1rem;
+  }
+
+  :global(.work-content hr) {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0 1.5rem;
+  }
+
+  :global(.work-content blockquote) {
+    border-left: 2px solid var(--border);
+    padding-left: 1rem;
+    margin: 0 0 0.9rem;
+  }
+
+  :global(.work-content blockquote p) {
+    margin-bottom: 0;
+  }
+
+  :global(.work-content p:has(> strong:only-child)) {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.work-content strong) {
+    font-weight: inherit;
+  }
+
+  :global(.work-content ul) {
+    list-style: none;
+    padding: 0 0 0.85rem 1rem;
+    margin: 0 0 0.85rem;
+    border-left: 2px solid var(--border);
+  }
+
+  :global(.work-content li) {
+    font-size: 1.05rem;
+    line-height: 1.68;
+    padding: 0.08rem 0;
+  }
+</style>
