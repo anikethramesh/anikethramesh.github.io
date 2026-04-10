@@ -33,6 +33,38 @@
         draggable="false"
       />
 
+      <a
+        class="hotspot hotspot--bio"
+        href="/stylize/about"
+        aria-label="About me"
+        data-piece="bio"></a>
+      <a
+        class="hotspot hotspot--tv"
+        href="/stylize/appearances"
+        aria-label="Appearances"
+        data-piece="tv"></a>
+      <a
+        class="hotspot hotspot--work"
+        href="/stylize/my-work"
+        aria-label="My Work"
+        data-piece="work"></a>
+      <a
+        class="hotspot hotspot--zine"
+        href="/stylize/zine"
+        aria-label="Zine"
+        data-piece="zine"></a>
+      <button
+        type="button"
+        class="hotspot hotspot--couch"
+        id="hotspot-couch"
+        aria-label="Toggle dark mode"
+        data-piece="couch"></button>
+      <a
+        class="hotspot hotspot--blog"
+        href="/stylize/blog"
+        aria-label="Blog"
+        data-piece="blog"></a>
+
       <img
         class="layer-cutout"
         id="cut-bio"
@@ -40,6 +72,7 @@
         alt=""
         draggable="false"
         crossorigin="anonymous"
+        data-piece="bio"
       />
       <img
         class="layer-cutout"
@@ -48,6 +81,7 @@
         alt=""
         draggable="false"
         crossorigin="anonymous"
+        data-piece="tv"
       />
       <img
         class="layer-cutout"
@@ -56,6 +90,7 @@
         alt=""
         draggable="false"
         crossorigin="anonymous"
+        data-piece="work"
       />
       <img
         class="layer-cutout"
@@ -64,6 +99,7 @@
         alt=""
         draggable="false"
         crossorigin="anonymous"
+        data-piece="zine"
       />
       <img
         class="layer-cutout"
@@ -72,6 +108,7 @@
         alt=""
         draggable="false"
         crossorigin="anonymous"
+        data-piece="couch"
       />
       <img
         class="layer-cutout"
@@ -80,16 +117,42 @@
         alt=""
         draggable="false"
         crossorigin="anonymous"
+        data-piece="blog"
       />
 
-      <span class="tip" id="tip-bio">About me</span>
-      <span class="tip" id="tip-tv">Appearances</span>
-      <span class="tip" id="tip-work">My Work</span>
-      <span class="tip" id="tip-zine">Zine</span>
-      <span class="tip" id="tip-blog">Blog</span>
-      <span class="tip" id="tip-couch">Toggle Dark Mode</span>
-
-      <div id="collage-hit" class="collage-hit"></div>
+      <span
+        class="tip"
+        id="tip-bio"
+        data-piece="bio"
+        style="left: 43%; top: 49%;">About me</span
+      >
+      <span class="tip" id="tip-tv" data-piece="tv" style="left: 66%; top: 37%;"
+        >Appearances</span
+      >
+      <span
+        class="tip"
+        id="tip-work"
+        data-piece="work"
+        style="left: 21%; top: 22%;">My Work</span
+      >
+      <span
+        class="tip"
+        id="tip-zine"
+        data-piece="zine"
+        style="left: 85%; top: 49%;">Zine</span
+      >
+      <span
+        class="tip"
+        id="tip-blog"
+        data-piece="blog"
+        style="left: 70%; top: 16%;">Blog</span
+      >
+      <span
+        class="tip"
+        id="tip-couch"
+        data-piece="couch"
+        style="left: 12%; top: 74%;">Toggle Dark Mode</span
+      >
     </div>
   </div>
 </main>
@@ -213,6 +276,81 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
   }
 
+  .hotspot {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hotspot--bio {
+    left: 19%;
+    top: 47%;
+    width: 48%;
+    height: 50%;
+    clip-path: polygon(
+      30% 0,
+      76% 5%,
+      100% 39%,
+      88% 100%,
+      12% 100%,
+      0 56%,
+      10% 15%
+    );
+  }
+
+  .hotspot--tv {
+    left: 50%;
+    top: 35%;
+    width: 32%;
+    height: 22%;
+    clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 28%);
+  }
+
+  .hotspot--work {
+    left: 0;
+    top: 20%;
+    width: 44%;
+    height: 56%;
+    clip-path: polygon(0 10%, 72% 0, 100% 48%, 78% 100%, 0 100%);
+  }
+
+  .hotspot--zine {
+    left: 68%;
+    top: 47%;
+    width: 32%;
+    height: 46%;
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%, 0 18%);
+  }
+
+  .hotspot--couch {
+    left: 0;
+    top: 73%;
+    width: 24%;
+    height: 17%;
+    clip-path: ellipse(52% 50% at 50% 50%);
+  }
+
+  .hotspot--blog {
+    left: 39%;
+    top: 14%;
+    width: 61%;
+    height: 24%;
+    clip-path: polygon(0 28%, 44% 0, 100% 0, 100% 72%, 24% 100%, 0 84%);
+  }
+
+  .hotspot:focus-visible {
+    outline: 2px dashed var(--stylize-tip-text);
+    outline-offset: 2px;
+  }
+
   .collage img {
     position: absolute;
     inset: 0;
@@ -235,14 +373,12 @@
     filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.2));
   }
 
-  .layer-cutout.active {
+  .layer-cutout.is-active {
     opacity: 1;
   }
 
   .tip {
     position: absolute;
-    left: 50%;
-    top: 50%;
     transform: translateX(-50%) translateY(-100%);
     margin-top: -10px;
     background: var(--stylize-tip-bg);
@@ -272,16 +408,8 @@
     border-top-color: var(--stylize-tip-bg);
   }
 
-  .tip.active {
+  .tip.is-active {
     opacity: 1;
-  }
-
-  .collage-hit {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    cursor: crosshair;
-    touch-action: manipulation;
   }
 
   .normalise-btn {
@@ -318,28 +446,12 @@
 </style>
 
 <script>
-  const W = 480;
-  const H = 637;
+  const COLLAGE_ID = "collage";
+  const COUCH_TIP_ID = "tip-couch";
+  const ACTIVE_CLASS = "is-active";
+  const TOUCH_NAV_DELAY_MS = 140;
 
-  const CUTOUTS = [
-    { cutId: "cut-bio", tipId: "tip-bio", href: "/stylize/about" },
-    { cutId: "cut-tv", tipId: "tip-tv", href: "/stylize/appearances" },
-    { cutId: "cut-work", tipId: "tip-work", href: "/stylize/my-work" },
-    { cutId: "cut-zine", tipId: "tip-zine", href: "/stylize/zine" },
-    { cutId: "cut-blog", tipId: "tip-blog", href: "/stylize/blog" },
-    { cutId: "cut-couch", tipId: "tip-couch", href: null },
-  ];
-
-  const pixelData: Record<string, ImageData> = {};
-  const cutoutBounds: Record<
-    string,
-    { minX: number; minY: number; maxX: number; maxY: number }
-  > = {};
-  let currentHit: string | null = null;
-
-  function navigate(href: string) {
-    window.location.href = href;
-  }
+  let activePiece: string | null = null;
 
   function toggleTheme() {
     const current = document.documentElement.getAttribute("data-theme");
@@ -350,7 +462,7 @@
   }
 
   function syncThemeCopy() {
-    const tip = document.getElementById("tip-couch");
+    const tip = document.getElementById(COUCH_TIP_ID);
     if (!tip) return;
 
     const current = document.documentElement.getAttribute("data-theme");
@@ -358,161 +470,87 @@
       current === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode";
   }
 
-  function setActive(hit: string | null) {
-    CUTOUTS.forEach(({ cutId, tipId }) => {
-      document.getElementById(cutId)?.classList.toggle("active", cutId === hit);
-      document.getElementById(tipId)?.classList.toggle("active", cutId === hit);
-    });
-    currentHit = hit;
+  function setActivePiece(piece: string | null) {
+    if (activePiece === piece) return;
 
-    const hitLayer = document.getElementById("collage-hit");
-    if (hitLayer) {
-      (hitLayer as HTMLElement).style.cursor = hit ? "pointer" : "crosshair";
-    }
+    activePiece = piece;
+
+    document
+      .getElementById(COLLAGE_ID)
+      ?.querySelectorAll<HTMLElement>("[data-piece]")
+      .forEach(element => {
+        element.classList.toggle(
+          ACTIVE_CLASS,
+          piece !== null && element.dataset.piece === piece
+        );
+      });
   }
 
-  function loadPixelData(cutId: string, src: string): Promise<void> {
-    return new Promise(resolve => {
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        canvas.width = W;
-        canvas.height = H;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) {
-          resolve();
-          return;
-        }
+  function bindHotspot(hotspot: HTMLElement) {
+    const piece = hotspot.dataset.piece;
+    if (!piece) return;
 
-        ctx.drawImage(img, 0, 0, W, H);
-
-        try {
-          pixelData[cutId] = ctx.getImageData(0, 0, W, H);
-          const bounds = getOpaqueBounds(pixelData[cutId]);
-          if (bounds) {
-            cutoutBounds[cutId] = bounds;
-          }
-        } catch {
-          // Ignore tainted canvas failures and leave this cutout inactive.
-        }
-
-        resolve();
-      };
-      img.onerror = () => resolve();
-      img.src = src;
-    });
-  }
-
-  function isHit(cutId: string, x: number, y: number): boolean {
-    const data = pixelData[cutId];
-    if (!data) return false;
-
-    const px = Math.floor(x);
-    const py = Math.floor(y);
-    if (px < 0 || py < 0 || px >= W || py >= H) return false;
-
-    const alpha = data.data[(py * W + px) * 4 + 3];
-    return alpha > 15;
-  }
-
-  function getOpaqueBounds(data: ImageData) {
-    let minX = W;
-    let minY = H;
-    let maxX = -1;
-    let maxY = -1;
-
-    for (let y = 0; y < H; y++) {
-      for (let x = 0; x < W; x++) {
-        const alpha = data.data[(y * W + x) * 4 + 3];
-        if (alpha <= 15) continue;
-
-        if (x < minX) minX = x;
-        if (y < minY) minY = y;
-        if (x > maxX) maxX = x;
-        if (y > maxY) maxY = y;
+    const activate = () => setActivePiece(piece);
+    const clear = () => {
+      if (activePiece === piece) {
+        setActivePiece(null);
       }
-    }
+    };
 
-    if (maxX < 0 || maxY < 0) return null;
-    return { minX, minY, maxX, maxY };
-  }
+    hotspot.addEventListener("mouseenter", activate);
+    hotspot.addEventListener("mouseleave", clear);
+    hotspot.addEventListener("focus", activate);
+    hotspot.addEventListener("blur", clear);
+    hotspot.addEventListener("pointerdown", activate);
+    hotspot.addEventListener("pointerup", activate);
+    hotspot.addEventListener("touchstart", activate, { passive: true });
+    hotspot.addEventListener("touchend", activate);
 
-  function positionTips() {
-    CUTOUTS.forEach(({ cutId, tipId }) => {
-      const bounds = cutoutBounds[cutId];
-      const tip = document.getElementById(tipId);
-      if (!bounds || !tip) return;
-
-      const centerX = ((bounds.minX + bounds.maxX) / 2 / W) * 100;
-      const topY = (bounds.minY / H) * 100;
-
-      tip.style.left = `${centerX}%`;
-      tip.style.top = `${topY}%`;
-    });
-  }
-
-  function getHitAtPoint(clientX: number, clientY: number): string | null {
-    const hitLayer = document.getElementById("collage-hit");
-    if (!hitLayer) return null;
-
-    const rect = hitLayer.getBoundingClientRect();
-    const scaleX = W / rect.width;
-    const scaleY = H / rect.height;
-    const x = (clientX - rect.left) * scaleX;
-    const y = (clientY - rect.top) * scaleY;
-
-    for (const { cutId } of [...CUTOUTS].reverse()) {
-      if (isHit(cutId, x, y)) return cutId;
-    }
-
-    return null;
-  }
-
-  async function preloadAll() {
-    await Promise.all(
-      CUTOUTS.map(({ cutId }) => {
-        const el = document.getElementById(cutId) as HTMLImageElement | null;
-        if (el?.src) return loadPixelData(cutId, el.src);
-        return Promise.resolve();
-      })
-    );
-    positionTips();
-  }
-
-  function setupHitDetection() {
-    const hitLayer = document.getElementById("collage-hit");
-    if (!hitLayer) return;
-
-    hitLayer.addEventListener("pointermove", (event: PointerEvent) => {
-      setActive(getHitAtPoint(event.clientX, event.clientY));
-    });
-
-    hitLayer.addEventListener("pointerleave", () => {
-      setActive(null);
-    });
-
-    hitLayer.addEventListener("click", (event: MouseEvent) => {
-      const hit = getHitAtPoint(event.clientX, event.clientY) ?? currentHit;
-      if (!hit) return;
-
-      const entry = CUTOUTS.find(cutout => cutout.cutId === hit);
-      if (!entry) return;
-
-      if (entry.href) {
-        navigate(entry.href);
-      } else {
+    if (piece === "couch") {
+      hotspot.addEventListener("click", event => {
+        event.preventDefault();
+        activate();
         toggleTheme();
-        setActive(hit);
-      }
+      });
+      return;
+    }
+
+    if (!(hotspot instanceof HTMLAnchorElement)) return;
+
+    hotspot.addEventListener("click", event => {
+      const isTouchLike =
+        window.matchMedia("(hover: none), (pointer: coarse)").matches ||
+        navigator.maxTouchPoints > 0;
+
+      if (!isTouchLike) return;
+
+      event.preventDefault();
+      activate();
+      window.setTimeout(() => {
+        window.location.href = hotspot.href;
+      }, TOUCH_NAV_DELAY_MS);
     });
   }
 
   function init() {
+    const collage = document.getElementById(COLLAGE_ID);
+    if (!collage || collage.dataset.bound === "true") {
+      syncThemeCopy();
+      return;
+    }
+
+    collage.dataset.bound = "true";
     syncThemeCopy();
-    preloadAll();
-    setupHitDetection();
+
+    collage
+      .querySelectorAll<HTMLElement>(".hotspot")
+      .forEach(hotspot => bindHotspot(hotspot));
+
+    collage.addEventListener("mouseleave", () => {
+      setActivePiece(null);
+    });
   }
 
+  init();
   document.addEventListener("astro:page-load", init);
 </script>
