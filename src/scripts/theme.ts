@@ -24,7 +24,17 @@ function getPreferTheme(): string {
 // Use existing theme value from inline script if available, otherwise detect
 let themeValue = window.theme?.themeValue ?? getPreferTheme();
 
+function setTheme(val: string): void {
+  themeValue = val;
+  if (window.theme) {
+    window.theme.themeValue = val;
+  }
+}
+
 function setPreference(): void {
+  if (window.theme?.themeValue && window.theme.themeValue !== themeValue) {
+    themeValue = window.theme.themeValue;
+  }
   localStorage.setItem(THEME, themeValue);
   reflectPreference();
 }
@@ -53,20 +63,14 @@ function reflectPreference(): void {
 }
 
 // Update the global theme API
-if (window.theme) {
-  window.theme.setPreference = setPreference;
-  window.theme.reflectPreference = reflectPreference;
-} else {
-  window.theme = {
-    themeValue,
-    setPreference,
-    reflectPreference,
-    getTheme: () => themeValue,
-    setTheme: (val: string) => {
-      themeValue = val;
-    },
-  };
-}
+window.theme = {
+  ...window.theme,
+  themeValue,
+  setPreference,
+  reflectPreference,
+  getTheme: () => themeValue,
+  setTheme,
+};
 
 // Ensure theme is reflected (in case body wasn't ready when inline script ran)
 reflectPreference();
@@ -77,8 +81,7 @@ function setThemeFeature(): void {
 
   // now this script can find and listen for clicks on the control
   document.querySelector("#theme-btn")?.addEventListener("click", () => {
-    themeValue = themeValue === LIGHT ? DARK : LIGHT;
-    window.theme?.setTheme(themeValue);
+    setTheme(themeValue === LIGHT ? DARK : LIGHT);
     setPreference();
   });
 }
@@ -108,7 +111,6 @@ document.addEventListener("astro:before-swap", event => {
 window
   .matchMedia("(prefers-color-scheme: dark)")
   .addEventListener("change", ({ matches: isDark }) => {
-    themeValue = isDark ? DARK : LIGHT;
-    window.theme?.setTheme(themeValue);
+    setTheme(isDark ? DARK : LIGHT);
     setPreference();
   });

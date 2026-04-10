@@ -50,6 +50,17 @@ const navLinks = [
           </a>
         ))
       }
+      <button
+        id="stylize-btn"
+        title="Stylize"
+        aria-label="Enter stylize mode"
+        style="font-family: var(--font-mono), monospace; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; background: none; border: 1px solid var(--border); color: var(--muted); padding: 2px 8px; cursor: pointer; transition: color 0.15s, border-color 0.15s;"
+        onmouseover="this.style.color='var(--foreground)'; this.style.borderColor='var(--foreground)';"
+        onmouseout="this.style.color='var(--muted)'; this.style.borderColor='var(--border)';"
+      >
+        Stylize
+      </button>
+
       {
         SITE.lightAndDarkMode && (
           <button
